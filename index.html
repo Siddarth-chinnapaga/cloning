@@ -2,80 +2,134 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Registration Form</title>
+  <title>Modern Registration Form</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     .form-container {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 300px;
+      background-color: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
     }
 
     h2 {
-      margin-bottom: 20px;
       text-align: center;
+      margin-bottom: 30px;
+      color: #333;
     }
 
     label {
       display: block;
-      margin-top: 10px;
-      margin-bottom: 5px;
+      margin: 10px 0 5px;
       font-weight: bold;
+      color: #333;
     }
 
     input[type="text"],
     input[type="email"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="tel"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px 10px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #2980b9;
+      outline: none;
+    }
+
+    .gender {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .gender label {
+      font-weight: normal;
     }
 
     button {
       width: 100%;
-      padding: 10px;
-      background-color: #007BFF;
+      background-color: #2980b9;
       color: white;
       border: none;
-      margin-top: 20px;
-      border-radius: 4px;
-      cursor: pointer;
+      padding: 12px;
       font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #1c6ea4;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
   <div class="form-container">
-    <h2>Register</h2>
+    <h2>Create Account</h2>
     <form action="#" method="post">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" required>
 
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
 
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label>Gender</label>
+      <div class="gender">
+        <label><input type="radio" name="gender" value="male" required> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+        <label><input type="radio" name="gender" value="other"> Other</label>
+      </div>
+
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
 
-      <button type="submit">Sign Up</button>
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" name="confirm-password" required>
+
+      <button type="submit">Register</button>
     </form>
+    <p class="note">Already have an account? Login instead.</p>
   </div>
 </body>
 </html>
