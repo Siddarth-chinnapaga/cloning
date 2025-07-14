@@ -1,135 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Modern Registration Form</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated Registration Form</title>
   <style>
+    /* General Reset */
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #111213, #013041, #490303);
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(-45deg, #00bcd4, #3f51b5, #673ab7, #e91e63);
       background-size: 400% 400%;
-      animation: gradientBG 10s ease infinite;
-      margin: 0;
-      padding: 0;
+      animation: gradient 15s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .form-container {
-      background-color: white;
-      padding: 40px 30px;
-      border-radius: 12px;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
+      position: relative;
+      animation: fadeInUp 1s ease;
     }
 
-    h2 {
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-container h2 {
       text-align: center;
       margin-bottom: 30px;
       color: #333;
     }
 
-    label {
-      display: block;
-      margin: 10px 0 5px;
-      font-weight: bold;
-      color: #333;
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="tel"] {
+    .input-group input {
       width: 100%;
       padding: 12px 10px;
-      margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      background: transparent;
       font-size: 16px;
-      transition: border-color 0.3s;
-    }
-
-    input:focus {
-      border-color: #2980b9;
       outline: none;
+      transition: 0.3s;
     }
 
-    .gender {
+    .input-group label {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      background: white;
+      padding: 0 4px;
+      color: #888;
+      font-size: 16px;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+      top: -8px;
+      font-size: 13px;
+      color: #3f51b5;
+    }
+
+    .gender-group {
       display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
+      justify-content: space-between;
+      margin-bottom: 20px;
     }
 
-    .gender label {
+    .gender-group label {
       font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     button {
       width: 100%;
-      background-color: #2980b9;
-      color: white;
-      border: none;
       padding: 12px;
+      border: none;
+      background: #3f51b5;
+      color: white;
       font-size: 16px;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #1c6ea4;
+      background: #2c387e;
     }
 
-    .note {
+    .footer-text {
       text-align: center;
-      font-size: 12px;
-      color: #888;
       margin-top: 15px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 500px) {
+      .form-container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="form-container">
-    <h2>Create Account</h2>
-    <form action="#" method="post">
-      <label for="fullname">Full Name</label>
-      <input type="text" id="fullname" name="fullname" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required>
-
-      <label>Gender</label>
-      <div class="gender">
-        <label><input type="radio" name="gender" value="male" required> Male</label>
-        <label><input type="radio" name="gender" value="female"> Female</label>
-        <label><input type="radio" name="gender" value="other"> Other</label>
+    <h2>Register Now</h2>
+    <form action="#" method="POST">
+      <div class="input-group">
+        <input type="text" id="fullname" name="fullname" required placeholder=" " />
+        <label for="fullname">Full Name</label>
       </div>
-
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-
-      <label for="confirm-password">Confirm Password</label>
-      <input type="password" id="confirm-password" name="confirm-password" required>
-
-      <button type="submit">Register</button>
+      <div class="input-group">
+        <input type="email" id="email" name="email" required placeholder=" " />
+        <label for="email">Email Address</label>
+      </div>
+      <div class="input-group">
+        <input type="tel" id="phone" name="phone" required placeholder=" " />
+        <label for="phone">Phone Number</label>
+      </div>
+      <div class="gender-group">
+        <label><input type="radio" name="gender" value="male" required /> Male</label>
+        <label><input type="radio" name="gender" value="female" /> Female</label>
+        <label><input type="radio" name="gender" value="other" /> Other</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" name="password" required placeholder=" " />
+        <label for="password">Password</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="confirm-password" name="confirm-password" required placeholder=" " />
+        <label for="confirm-password">Confirm Password</label>
+      </div>
+      <button type="submit">Create Account</button>
     </form>
-    <p class="note">Already have an account? Login instead.</p>
+    <p class="footer-text">Already have an account? <a href="#">Login</a></p>
   </div>
 </body>
 </html>
